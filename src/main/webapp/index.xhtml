@@ -4,7 +4,7 @@
       xmlns:p="http://primefaces.org/ui">
 <h:head>
     <title>Web3</title>
-    <link href="recources/css/page.css" rel="stylesheet" type="text/css" />
+    <link href="recources/css/indexPage.css" rel="stylesheet" type="text/css" />
     <link href="recources/images/duck.png" rel="icon"/>
     <style>
         #clock {
@@ -26,9 +26,16 @@
     </div>
 </header>
 <h:body>
-    <h:form>
+    <h:form  class="button">
         <div id="clock"></div>
-        <p:commandButton value="Отправить" id="index_button" />
+        <p:button value="Главная" action="go-to-main" id="go-to-main-button"/>
+
     </h:form>
 </h:body>
+<footer>
+    <figure>
+        Университет ИТМО, факультет ПИиКТ, бывшая кафедра ВТ
+        <figcaption>2024 год</figcaption>
+    </figure>
+</footer>
 </html>

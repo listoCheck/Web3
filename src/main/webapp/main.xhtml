@@ -1,11 +1,109 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-   <f:view>
-      <h:outputLabel value="Hello, world"/>
-   </f:view>
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+    <meta charset="UTF-8"/>
+    <title>Web3</title>
+    <link href="recources/css/mainPage.css" rel="stylesheet" type="text/css" />
+    <link href="recources/images/duck.png" rel="icon"/>
+</h:head>
+<header>
+    <div class="header-content">
+        <img src="recources/images/logo.png" alt="Logo" />
+        <div class="header-text">
+            <h1>Лабораторная работа по вебу №3</h1>
+            <h2>ААА</h2>
+            <h2>Группа P3206, Вариант №115223</h2>
+        </div>
+    </div>
+</header>
+<h:body>
+    <h:form>
+        <div class="container">
+            <!-- Левый блок: Меню -->
+            <div class="menu">
+                <h1>Проверка попадания в область</h1>
+                <!-- Изменение X с помощью commandButton -->
+                <h2>Измените X:</h2>
+                <div class="button-container">
+                    <p:commandButton value="-3" action="#{bean.setX(-3)}" update="xValue"/>
+                    <p:commandButton value="-2" action="#{bean.setX(-2)}" update="xValue"/>
+                    <p:commandButton value="-1" action="#{bean.setX(-1)}" update="xValue"/>
+                    <p:commandButton value="0" action="#{bean.setX(0)}" update="xValue"/>
+                    <p:commandButton value="1" action="#{bean.setX(1)}" update="xValue"/>
+                    <p:commandButton value="2" action="#{bean.setX(2)}" update="xValue"/>
+                    <p:commandButton value="3" action="#{bean.setX(3)}" update="xValue"/>
+                    <p:commandButton value="4" action="#{bean.setX(4)}" update="xValue"/>
+                    <p:commandButton value="5" action="#{bean.setX(5)}" update="xValue"/>
+                </div>
+                <h:outputText id="xValue" value="Текущий X: #{bean.x}"/>
+
+                <!-- Изменение Y с помощью inputText -->
+                <h2>Введите Y (-5 до 5):</h2>
+                <p:inputText value="#{bean.y}" required="true" maxlength="4"
+                             placeholder="Введите Y от -5 до 5"/>
+                <h:message for="y" style="color:red"/>
+
+                <!-- Изменение R с помощью selectBooleanCheckBox -->
+                <h2>Измените R:</h2>
+                <p:selectBooleanCheckbox value="#{bean.r1}"/> 1
+                <p:selectBooleanCheckbox value="#{bean.r1_5}"/> 1.5
+                <p:selectBooleanCheckbox value="#{bean.r2}"/> 2
+                <p:selectBooleanCheckbox value="#{bean.r2_5}"/> 2.5
+                <p:selectBooleanCheckbox value="#{bean.r3}"/> 3
+                <div>
+                <h:outputText id="rValue" value="Текущий R: #{bean.r}"/>
+                </div>
+                <div class="checkButton">
+                    <!-- Кнопка проверки -->
+                    <p:commandButton value="Проверить" action="#{bean.checkPoint}" update="result"/>
+                </div>
+                <!-- Отображение результата -->
+                <h:outputText id="result" value="#{bean.result}" style="color: green;"/>
+            </div>
+
+            <!-- Правый блок: График -->
+            <div class="plot">
+                <h2>График:</h2>
+                <svg id="plot" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="0" y1="200" x2="400" y2="200" stroke="#000720"></line>
+                    <line x1="200" y1="0" x2="200" y2="400" stroke="#000720"></line>
+                    <line x1="350" y1="198" x2="350" y2="202" stroke="#000720"></line>
+                    <text x="355" y="195">R</text>
+                    <line x1="275" y1="198" x2="275" y2="202" stroke="#000720"></line>
+                    <text x="280" y="195">R/2</text>
+                    <line x1="125" y1="198" x2="125" y2="202" stroke="#000720"></line>
+                    <text x="123" y="195">-R/2</text>
+                    <line x1="50" y1="198" x2="50" y2="202" stroke="#000720"></line>
+                    <text x="55" y="195">-R</text>
+                    <line x1="198" y1="50" x2="202" y2="50" stroke="#000720"></line>
+                    <text x="204" y="55">R</text>
+                    <line x1="198" y1="125" x2="202" y2="125" stroke="#000720"></line>
+                    <text x="204" y="130">R/2</text>
+                    <line x1="198" y1="275" x2="202" y2="275" stroke="#000720"></line>
+                    <text x="204" y="280">-R/2</text>
+                    <line x1="198" y1="350" x2="202" y2="350" stroke="#000720"></line>
+                    <text x="204" y="355">-R</text>
+                    <polygon points="400,200 395,205 395, 195" fill="#000720" stroke="#101F27"></polygon>
+                    <polygon points="200,0 195,5 205,5" fill="#000720" stroke="#101F27"></polygon>
+                    <polygon points="200,200 275,200 200,125" fill-opacity="0.6" stroke="black" fill="red"></polygon>
+                    <rect x="200" y="200" width="75" height="150" fill-opacity="0.6" stroke="black" fill="red"></rect>
+                    <path d="M 200 200 L 50 200 C 75 350 200 350 200 350 Z" fill-opacity="0.6" stroke="black" fill="red"></path>
+                    <circle id="pointer" r="8" cx="200" cy="200" fill-opacity="0.8" fill="red" visibility="hidden"></circle>
+                </svg>
+            </div>
+        </div>
+    </h:form>
+</h:body>
+
+<footer>
+    <figure>
+        Университет ИТМО, факультет ПИиКТ, бывшая кафедра ВТ
+        <figcaption>2024 год</figcaption>
+    </figure>
+</footer>
 </html>
