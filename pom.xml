@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source> <!-- версия JDK -->
+        <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
@@ -26,7 +26,7 @@
         <dependency>
             <groupId>jakarta.faces</groupId>
             <artifactId>jakarta.faces-api</artifactId>
-            <version>3.0.0</version> <!-- проверьте, что версия актуальна -->
+            <version>3.0.0</version>
             <scope>provided</scope>
         </dependency>
 

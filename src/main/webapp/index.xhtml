@@ -6,6 +6,14 @@
     <title>Web3</title>
     <link href="recources/css/page.css" rel="stylesheet" type="text/css" />
     <link href="recources/images/duck.png" rel="icon"/>
+    <style>
+        #clock {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+    <script src="recources/js/clock.js"></script>
 </h:head>
 <header>
     <div class="header-content">
@@ -13,23 +21,14 @@
         <div class="header-text">
             <h1>Лабораторная работа по вебу №3</h1>
             <h2>ААА</h2>
-            <h2>Группа P3206, Вариант №115221</h2>
+            <h2>Группа P3206, Вариант №115223</h2>
         </div>
     </div>
 </header>
 <h:body>
     <h:form>
-        <h:panelGrid columns="2">
-            <h:outputLabel value="Имя:" for="name" />
-            <h:inputText id="name" value="#{bean.name}" />
-
-            <h:outputLabel value="Возраст:" for="age" />
-            <h:inputText id="age" value="#{bean.age}" />
-        </h:panelGrid>
-
-        <p:commandButton value="Отправить" action="#{bean.submit}" update="result" />
-
-        <h:outputText id="result" value="#{bean.result}" style="margin-top: 10px;" />
+        <div id="clock"></div>
+        <p:commandButton value="Отправить" id="index_button" />
     </h:form>
 </h:body>
 </html>

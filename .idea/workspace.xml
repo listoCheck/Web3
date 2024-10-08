@@ -10,32 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7c2d3fba-25c9-404b-9465-4fd038a9f2f7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/faces-config.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/index.xhtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/main.xhtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/recources/css/page.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/recources/images/discord_leave_sound_effect_download.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/recources/images/duck.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/recources/images/fail-wha-wha-version.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/recources/images/krya.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/recources/images/lego-breaking.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/recources/images/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/recources/images/reserve.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/recources/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/recources/js/clock.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/recources/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/recources/js/script.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,12 +26,30 @@
       <list>
         <option value="jsf" />
         <option value="facelets" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="ArtemAmuz" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "listoCheck"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/listoCheck/Web3.git",
+    "accountId": "72c0f8bc-c080-4d32-b8f1-c91356b0518f"
+  }
+}]]></component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
@@ -132,6 +129,7 @@
       <recent name="C:\Users\admin\IdeaProjects\web3\src\main\webapp" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\admin\IdeaProjects\web3\src\main\webapp\recources\js" />
       <recent name="C:\Users\admin\IdeaProjects\web3\src\main\webapp\recources" />
       <recent name="C:\Users\admin\IdeaProjects\web3\src\main\webapp\src\css" />
       <recent name="C:\Users\admin\IdeaProjects\web3\src\main\webapp" />
@@ -344,12 +342,25 @@
       <updated>1728299425290</updated>
       <workItem from="1728299426482" duration="835000" />
       <workItem from="1728300278279" duration="4525000" />
-      <workItem from="1728309627740" duration="11448000" />
+      <workItem from="1728309627740" duration="12666000" />
     </task>
+    <task id="LOCAL-00001" summary="Так, ну что, я уже разобрался как работает статика, первой страничке осталось немного">
+      <option name="closed" value="true" />
+      <created>1728384565208</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1728384565208</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Так, ну что, я уже разобрался как работает статика, первой страничке осталось немного" />
+    <option name="LAST_COMMIT_MESSAGE" value="Так, ну что, я уже разобрался как работает статика, первой страничке осталось немного" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
