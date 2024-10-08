@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Web3</title>
+    <link href="recources/css/page.css" rel="stylesheet" type="text/css" />
+    <link href="recources/images/duck.png" rel="icon"/>
+</h:head>
+<header>
+    <div class="header-content">
+        <img src="recources/images/logo.png" alt="Logo" />
+        <div class="header-text">
+            <h1>Лабораторная работа по вебу №3</h1>
+            <h2>ААА</h2>
+            <h2>Группа P3206, Вариант №115221</h2>
+        </div>
+    </div>
+</header>
+<h:body>
+    <h:form>
+        <h:panelGrid columns="2">
+            <h:outputLabel value="Имя:" for="name" />
+            <h:inputText id="name" value="#{bean.name}" />
+
+            <h:outputLabel value="Возраст:" for="age" />
+            <h:inputText id="age" value="#{bean.age}" />
+        </h:panelGrid>
+
+        <p:commandButton value="Отправить" action="#{bean.submit}" update="result" />
+
+        <h:outputText id="result" value="#{bean.result}" style="margin-top: 10px;" />
+    </h:form>
+</h:body>
+</html>
