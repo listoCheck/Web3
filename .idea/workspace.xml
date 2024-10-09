@@ -10,9 +10,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7c2d3fba-25c9-404b-9465-4fd038a9f2f7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/web3/PointCheckerBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/recources/js/buttonColor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.xhtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/recources/css/indexPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/recources/css/indexPage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/faces-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/faces-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/main.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/main.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/recources/css/mainPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/recources/css/mainPage.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +30,9 @@
       <list>
         <option value="jsf" />
         <option value="facelets" />
-        <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="Class" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -37,18 +44,18 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "listoCheck"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;listoCheck&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/listoCheck/Web3.git",
-    "accountId": "72c0f8bc-c080-4d32-b8f1-c91356b0518f"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/listoCheck/Web3.git&quot;,
+    &quot;accountId&quot;: &quot;72c0f8bc-c080-4d32-b8f1-c91356b0518f&quot;
   }
-}]]></component>
+}</component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
@@ -66,9 +73,9 @@
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2n6hRCmW1xoklijwv6BuGeoVtGW" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -88,8 +95,9 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Tomcat Server.Tomcat 10.1.30.executor": "Run",
     "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/admin/IdeaProjects/web3/src/main/webapp/recources/css",
+    "last_opened_file_path": "C:/Users/admin/Downloads/jboss-as-managed-beans-7.0.0.Beta1.jar",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -107,18 +115,6 @@
     ]
   }
 }]]></component>
-  <component name="QodanaHighlightedReportService">
-    <option name="localRunNotPublishedPersistedInfo">
-      <LocalReportPersistedInfo>
-        <option name="path" value="C:\Users\admin\AppData\Local\Temp\qodana_output\qodana.sarif.json" />
-        <option name="reportGuid" value="be3fd425-bd0e-4a91-a9ce-83a232bca58c" />
-        <option name="reportName" value="web3/qodana/2024-10-07" />
-      </LocalReportPersistedInfo>
-    </option>
-  </component>
-  <component name="QodanaIsSelectedPersistenceService">
-    <option name="selectedOrLoading" value="true" />
-  </component>
   <component name="QodanaReportsService">
     <option name="descriptions">
       <ReportDescription localRun="true" path="C:\Users\admin\AppData\Local\Temp\qodana_output\qodana.sarif.json" reportGuid="be3fd425-bd0e-4a91-a9ce-83a232bca58c" reportId="web3/qodana/2024-10-07" />
@@ -216,20 +212,6 @@
         </option>
       </method>
     </configuration>
-    <configuration default="true" type="JBossConfiguration" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
-      <deployment />
-      <server-settings>
-        <option name="SERVER" value="" />
-        <option name="BINDING_SET_NAME" value="" />
-        <option name="DOMAIN" value="false" />
-        <option name="SERVER_GROUP" value="" />
-        <option name="USERNAME" value="" />
-      </server-settings>
-      <predefined_log_file enabled="true" id="JBoss" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="index.xhtml" type="JavascriptDebugType" nameIsGenerated="true" uri="http://localhost:63342/web3/src/main/webapp/index.xhtml" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
@@ -319,6 +301,18 @@
         </option>
       </method>
     </configuration>
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
+      <deployment />
+      <server-settings />
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="JavaScript Debug.index.xhtml" />
       <item itemvalue="JBoss/WildFly Server.JBoss/WildFly 33.0.2.Final" />
@@ -343,7 +337,8 @@
       <updated>1728299425290</updated>
       <workItem from="1728299426482" duration="835000" />
       <workItem from="1728300278279" duration="4525000" />
-      <workItem from="1728309627740" duration="20386000" />
+      <workItem from="1728309627740" duration="20526000" />
+      <workItem from="1728495393675" duration="7110000" />
     </task>
     <task id="LOCAL-00001" summary="Так, ну что, я уже разобрался как работает статика, первой страничке осталось немного">
       <option name="closed" value="true" />
@@ -369,7 +364,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728417476801</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Вторую страничку сделал">
+      <option name="closed" value="true" />
+      <created>1728417998442</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1728417998442</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

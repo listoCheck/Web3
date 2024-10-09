@@ -38,8 +38,21 @@
             <version>13.0.0</version>
             <classifier>jakarta</classifier>
         </dependency>
-    </dependencies>
 
+        <dependency>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-api</artifactId>
+            <version>9.1.0</version> <!-- Версия может быть разной -->
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>8.0</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
     <build>
         <finalName>jsf-app</finalName>
     </build>

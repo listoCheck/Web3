@@ -90,10 +90,18 @@ body {
 }
 .button-container {
     display: flex;
-
     gap: 10px;
     justify-content: space-between;
     flex-wrap: nowrap;
+}
+.active-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.inactive-button {
+    background-color: #008CBA;
+    color: white;
 }
 
 
