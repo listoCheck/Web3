@@ -10,13 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7c2d3fba-25c9-404b-9465-4fd038a9f2f7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/web3/PointCheckerBean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/recources/js/buttonColor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/web3/PointResult.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/faces-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/faces-config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/web3/PointCheckerBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/web3/PointCheckerBean.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/main.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/main.xhtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/recources/css/mainPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/recources/css/mainPage.css" afterDir="false" />
     </list>
@@ -31,8 +28,8 @@
         <option value="jsf" />
         <option value="facelets" />
         <option value="HTML File" />
-        <option value="Class" />
         <option value="JavaScript File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -338,7 +335,7 @@
       <workItem from="1728299426482" duration="835000" />
       <workItem from="1728300278279" duration="4525000" />
       <workItem from="1728309627740" duration="20526000" />
-      <workItem from="1728495393675" duration="7110000" />
+      <workItem from="1728495393675" duration="18504000" />
     </task>
     <task id="LOCAL-00001" summary="Так, ну что, я уже разобрался как работает статика, первой страничке осталось немного">
       <option name="closed" value="true" />
@@ -372,7 +369,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728417998442</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="я понял как делать бины!">
+      <option name="closed" value="true" />
+      <created>1728502720827</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1728502720827</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -382,7 +387,8 @@
     <MESSAGE value="Так, ну что, я уже разобрался как работает статика, первой страничке осталось немного" />
     <MESSAGE value="Первая страница вроде бы готова, осталось настроить кнопку для перехода" />
     <MESSAGE value="Вторую страничку сделал" />
-    <option name="LAST_COMMIT_MESSAGE" value="Вторую страничку сделал" />
+    <MESSAGE value="я понял как делать бины!" />
+    <option name="LAST_COMMIT_MESSAGE" value="я понял как делать бины!" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -9,8 +9,91 @@
     <meta charset="UTF-8"/>
     <title>Web3</title>
     <link href="recources/css/mainPage.css" rel="stylesheet" type="text/css" />
-    <script src="recources/js/buttonColor.js"></script>
     <link href="recources/images/duck.png" rel="icon"/>
+    <style>
+        .custom-header {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .custom-table .ui-datatable-header {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .custom-table .ui-datatable-data td {
+            background-color: #f9f9f9;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+
+        .custom-table .result-yes {
+            color: green;
+        }
+
+        .custom-table .result-no {
+            color: red;
+        }
+
+        .custom-table .ui-datatable-data tr:hover {
+            background-color: #e0e0e0;
+        }
+
+        .custom-table {
+            border-collapse: collapse;
+            width: 60%;
+            margin-left: 20%;
+            margin-top: 20px;
+        }
+
+        .custom-table th, .custom-table td {
+            border: 1px solid #4CAF50;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .custom-table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .custom-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .custom-table tr:hover {
+            background-color: #ddd;
+        }
+
+    </style>
+    <script>
+        function checkRValue() {
+            var rValue = document.querySelector('input[name="bean:r"]:checked');
+            var checkButton = document.getElementById('checkButton'); // Убедитесь, что ID правильный
+
+            // Если значение R не выбрано, кнопка проверки отключена
+            if (!rValue || rValue===0.0) {
+                checkButton.disabled = true; // Отключить кнопку
+            } else {
+                checkButton.disabled = false; // Включить кнопку
+            }
+        }
+
+        // Проверка значения R при изменении
+        document.addEventListener("DOMContentLoaded", function() {
+            var rInputs = document.querySelectorAll('input[name="bean:r"]');
+            rInputs.forEach(function(input) {
+                input.addEventListener('change', checkRValue);
+            });
+
+            // Изначально отключаем кнопку
+            checkRValue();
+        });
+    </script>
+
+
 </h:head>
 <header>
     <div class="header-content">
@@ -21,6 +104,7 @@
             <h2>Группа P3206, Вариант №115223</h2>
         </div>
     </div>
+
 </header>
 <h:body>
     <h:form>
@@ -32,15 +116,15 @@
                 <!-- Изменение X с помощью commandButton -->
                 <h2>Измените X:</h2>
                 <div class="button-container" id="commandButton">
-                    <p:commandButton value="-3" id="__3" action="#{bean.setX(-3)}" update="@form" onclick="changeButtonStyle(this)" />
-                    <p:commandButton value="-2" id="__2" action="#{bean.setX(-2)}" update="@form" onclick="changeButtonStyle(this)" />
-                    <p:commandButton value="-1" id="__1" action="#{bean.setX(-1)}" update="@form" onclick="changeButtonStyle(this)" />
-                    <p:commandButton value="0" id="_0" action="#{bean.setX(0)}" update="@form" onclick="changeButtonStyle(this,)" />
-                    <p:commandButton value="1" id="_1" action="#{bean.setX(1)}" update="@form" onclick="changeButtonStyle(this)" />
-                    <p:commandButton value="2" id="_2" action="#{bean.setX(2)}" update="@form" onclick="changeButtonStyle(this)" />
-                    <p:commandButton value="3" id="_3" action="#{bean.setX(3)}" update="@form" onclick="changeButtonStyle(this)" />
-                    <p:commandButton value="4" id="_4" action="#{bean.setX(4)}" update="@form" onclick="changeButtonStyle(this)" />
-                    <p:commandButton value="5" id="_5" action="#{bean.setX(5)}" update="@form" onclick="changeButtonStyle(this)" />
+                    <p:commandButton value="-3" id="__3" action="#{bean.setX(-3)}" onclick="changeButtonStyle(this)" />
+                    <p:commandButton value="-2" id="__2" action="#{bean.setX(-2)}" onclick="changeButtonStyle(this)" />
+                    <p:commandButton value="-1" id="__1" action="#{bean.setX(-1)}" onclick="changeButtonStyle(this)" />
+                    <p:commandButton value="0" id="_0" action="#{bean.setX(0)}" onclick="changeButtonStyle(this)" />
+                    <p:commandButton value="1" id="_1" action="#{bean.setX(1)}" onclick="changeButtonStyle(this)" />
+                    <p:commandButton value="2" id="_2" action="#{bean.setX(2)}" onclick="changeButtonStyle(this)" />
+                    <p:commandButton value="3" id="_3" action="#{bean.setX(3)}" onclick="changeButtonStyle(this)" />
+                    <p:commandButton value="4" id="_4" action="#{bean.setX(4)}" onclick="changeButtonStyle(this)" />
+                    <p:commandButton value="5" id="_5" action="#{bean.setX(5)}" onclick="changeButtonStyle(this)" />
                 </div>
                 <h:outputText id="xValue" value="Текущий X: #{bean.x}"/>
 
@@ -48,35 +132,34 @@
                 <h2>Введите Y (-5 до 5):</h2>
                 <p:inputText value="#{bean.y}" required="true" maxlength="4"
                              placeholder="Введите Y от -5 до 5"/>
-                <h:message for="y" style="color:red"/>
 
                 <!-- Изменение R с помощью selectOneRadio -->
                 <h2>Измените R:</h2>
                 <p:selectOneRadio value="#{bean.r}">
-                    <f:selectItem itemLabel="1" itemValue="1" action="#{bean.setR(1)}"/>
-                    <f:selectItem itemLabel="1.5" itemValue="1.5" action="#{bean.setR(1.5)}"/>
-                    <f:selectItem itemLabel="2" itemValue="2" action="#{bean.setR(2)}"/>
-                    <f:selectItem itemLabel="2.5" itemValue="2.5" action="#{bean.setR(2.5)}"/>
-                    <f:selectItem itemLabel="3" itemValue="3" action="#{bean.setR(3)}"/>
+                    <f:selectItem itemLabel="1" itemValue="1.0" action="#{bean.setR(1)}" update="plot"/>
+                    <f:selectItem itemLabel="1.5" itemValue="1.5" action="#{bean.setR(1.5)}" update="plot"/>
+                    <f:selectItem itemLabel="2" itemValue="2.0" action="#{bean.setR(2)}" update="plot"/>
+                    <f:selectItem itemLabel="2.5" itemValue="2.5" action="#{bean.setR(2.5)}" update="plot"/>
+                    <f:selectItem itemLabel="3" itemValue="3.0" action="#{bean.setR(3)}" update="plot"/>
                 </p:selectOneRadio>
 
 
                 <div class="checkButton">
-                    <p:commandButton value="Проверить" action="#{bean.checkPoint}" update="result"/>
+                    <p:commandButton value="Проверить" action="#{bean.checkPoint}" update="resultTable"/>
                 </div>
                 <h:outputText id="result" value="#{bean.result}" style="color: green;"/>
             </div>
 
             <!-- Правый блок: График -->
-            <div class="plot">
+            <div id="plot" class="plot">
                 <h2>График:</h2>
                 <svg id="plot" xmlns="http://www.w3.org/2000/svg">
                     <line x1="0" y1="200" x2="400" y2="200" stroke="#000720"></line>
                     <line x1="200" y1="0" x2="200" y2="400" stroke="#000720"></line>
                     <line x1="350" y1="198" x2="350" y2="202" stroke="#000720"></line>
-                    <text x="355" y="195">R</text>
+                    <text x="355" y="195">#{bean.r}</text>
                     <line x1="275" y1="198" x2="275" y2="202" stroke="#000720"></line>
-                    <text x="280" y="195">R/2</text>
+                    <text x="280" y="195">#{bean.r/2}</text>
                     <line x1="125" y1="198" x2="125" y2="202" stroke="#000720"></line>
                     <text x="123" y="195">-R/2</text>
                     <line x1="50" y1="198" x2="50" y2="202" stroke="#000720"></line>
@@ -89,7 +172,8 @@
                     <text x="204" y="280">-R/2</text>
                     <line x1="198" y1="350" x2="202" y2="350" stroke="#000720"></line>
                     <text x="204" y="355">-R</text>
-                    <!-- Сектор, прямоугольник и треугольник -->
+                    <polygon points="400,200 395,205 395, 195" fill="#000720" stroke="#101F27"></polygon>
+                    <polygon points="200,0 195,5 205,5" fill="#000720" stroke="#101F27"></polygon>
                     <polygon points="200,200 275,200 200,125" fill-opacity="0.6" stroke="black" fill="red"></polygon>
                     <rect x="200" y="200" width="75" height="150" fill-opacity="0.6" stroke="black" fill="red"></rect>
                     <path d="M 200 200 L 50 200 C 75 350 200 350 200 350 Z" fill-opacity="0.6" stroke="black" fill="red"></path>
@@ -97,10 +181,41 @@
                 </svg>
             </div>
         </div>
+        <div>
+        <h2 style="margin-left: 20px">Результаты:</h2>
+            <h:dataTable id="resultTable" value="#{bean.results}" var="result" styleClass="custom-table" style="width:60%; margin-left: 20%">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="X" />
+                    </f:facet>
+                    <h:outputText value="#{result.x}"/>
+                </h:column>
 
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Y" />
+                    </f:facet>
+                    <h:outputText value="#{result.y}"/>
+                </h:column>
 
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="R" />
+                    </f:facet>
+                    <h:outputText value="#{result.r}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Результат" />
+                    </f:facet>
+                    <h:outputText value="#{result.result}"/>
+                </h:column>
+            </h:dataTable>
+        </div>
     </h:form>
 </h:body>
+
 <p:button value="Начальная страница" styleClass="mybutton" outcome="go-index"/>
 <footer>
     <figure>
