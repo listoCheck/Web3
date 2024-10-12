@@ -68,30 +68,27 @@
         }
 
     </style>
+    <h:outputText id="hiddenR" value="#{bean.r}" style="display:none" />
     <script>
-        function checkRValue() {
-            var rValue = document.querySelector('input[name="bean:r"]:checked');
-            var checkButton = document.getElementById('checkButton'); // Убедитесь, что ID правильный
-
-            // Если значение R не выбрано, кнопка проверки отключена
-            if (!rValue || rValue===0.0) {
-                checkButton.disabled = true; // Отключить кнопку
-            } else {
-                checkButton.disabled = false; // Включить кнопку
-            }
+        function getCoordinates(event) {
+            const svg = event.currentTarget;
+            const rect = svg.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+            const r = parseFloat(document.getElementById("hiddenR").innerText);
+            const centerX = 200;
+            const centerY = 200;
+            const graphX = (x - centerX) / (150 / r);
+            const graphY = (centerY - y) / (150 / r);
+            const pointer = document.getElementById("pointer");
+            pointer.setAttribute("cx", x);
+            pointer.setAttribute("cy", y);
+            pointer.setAttribute("visibility", "visible");
+            pointer.setAttribute('fill', 'black');
+            setCoordinates([{name: 'x', value: graphX}, {name: 'y', value: graphY}]);
         }
-
-        // Проверка значения R при изменении
-        document.addEventListener("DOMContentLoaded", function() {
-            var rInputs = document.querySelectorAll('input[name="bean:r"]');
-            rInputs.forEach(function(input) {
-                input.addEventListener('change', checkRValue);
-            });
-
-            // Изначально отключаем кнопку
-            checkRValue();
-        });
     </script>
+
 
 
 </h:head>
@@ -109,11 +106,10 @@
 <h:body>
     <h:form>
         <div class="container">
-            <!-- Левый блок: Меню -->
+
             <div class="menu">
                 <h1>Проверка попадания в область</h1>
 
-                <!-- Изменение X с помощью commandButton -->
                 <h2>Измените X:</h2>
                 <div class="button-container" id="commandButton">
                     <p:commandButton value="-3" id="__3" action="#{bean.setX(-3)}" onclick="changeButtonStyle(this)" />
@@ -128,58 +124,86 @@
                 </div>
                 <h:outputText id="xValue" value="Текущий X: #{bean.x}"/>
 
-                <!-- Изменение Y с помощью inputText -->
                 <h2>Введите Y (-5 до 5):</h2>
-                <p:inputText value="#{bean.y}" required="true" maxlength="4"
+                <p:inputText id="yValue" value="#{bean.y}" required="true" maxlength="5"
                              placeholder="Введите Y от -5 до 5"/>
 
-                <!-- Изменение R с помощью selectOneRadio -->
                 <h2>Измените R:</h2>
-                <p:selectOneRadio value="#{bean.r}">
-                    <f:selectItem itemLabel="1" itemValue="1.0" action="#{bean.setR(1)}" update="plot"/>
-                    <f:selectItem itemLabel="1.5" itemValue="1.5" action="#{bean.setR(1.5)}" update="plot"/>
-                    <f:selectItem itemLabel="2" itemValue="2.0" action="#{bean.setR(2)}" update="plot"/>
-                    <f:selectItem itemLabel="2.5" itemValue="2.5" action="#{bean.setR(2.5)}" update="plot"/>
-                    <f:selectItem itemLabel="3" itemValue="3.0" action="#{bean.setR(3)}" update="plot"/>
+                <p:selectOneRadio value="#{bean.r}" update="plot">
+                    <f:selectItem itemLabel="1" itemValue="1.0" action="#{bean.setR(1)}" update="rValue"/>
+                    <f:selectItem itemLabel="1.5" itemValue="1.5" action="#{bean.setR(1.5)}" update="rValue"/>
+                    <f:selectItem itemLabel="2" itemValue="2.0" action="#{bean.setR(2)}" update="rValue"/>
+                    <f:selectItem itemLabel="2.5" itemValue="2.5" action="#{bean.setR(2.5)}" update="rValue"/>
+                    <f:selectItem itemLabel="3" itemValue="3.0" action="#{bean.setR(3)}" update="rValue"/>
                 </p:selectOneRadio>
-
+                <p:commandButton value="Нарисовать R" id="upd" onclick="changeButtonStyle(this)" style="margin-top: 5%"/>
+                <h:outputText id="rValue" value="Текущий R на графике: #{bean.getR()}" style="margin-left: 5%"/>
 
                 <div class="checkButton">
-                    <p:commandButton value="Проверить" action="#{bean.checkPoint}" update="resultTable"/>
+                    <p:commandButton value="Проверить" action="#{bean.checkPoint}" update="resultTable" style="margin-left: 0%; margin-top: 10%"/>
                 </div>
                 <h:outputText id="result" value="#{bean.result}" style="color: green;"/>
             </div>
+            <p:remoteCommand name="setCoordinates" action="#{bean.setCoordinates(param.x, param.y)}" update="xValue, yValue">
+                <f:param name="x" value="#{param.x}" />
+                <f:param name="y" value="#{param.y}" />
+            </p:remoteCommand>
+
 
             <!-- Правый блок: График -->
-            <div id="plot" class="plot">
-                <h2>График:</h2>
-                <svg id="plot" xmlns="http://www.w3.org/2000/svg">
-                    <line x1="0" y1="200" x2="400" y2="200" stroke="#000720"></line>
-                    <line x1="200" y1="0" x2="200" y2="400" stroke="#000720"></line>
-                    <line x1="350" y1="198" x2="350" y2="202" stroke="#000720"></line>
-                    <text x="355" y="195">#{bean.r}</text>
-                    <line x1="275" y1="198" x2="275" y2="202" stroke="#000720"></line>
-                    <text x="280" y="195">#{bean.r/2}</text>
-                    <line x1="125" y1="198" x2="125" y2="202" stroke="#000720"></line>
-                    <text x="123" y="195">-R/2</text>
-                    <line x1="50" y1="198" x2="50" y2="202" stroke="#000720"></line>
-                    <text x="55" y="195">-R</text>
-                    <line x1="198" y1="50" x2="202" y2="50" stroke="#000720"></line>
-                    <text x="204" y="55">R</text>
-                    <line x1="198" y1="125" x2="202" y2="125" stroke="#000720"></line>
-                    <text x="204" y="130">R/2</text>
-                    <line x1="198" y1="275" x2="202" y2="275" stroke="#000720"></line>
-                    <text x="204" y="280">-R/2</text>
-                    <line x1="198" y1="350" x2="202" y2="350" stroke="#000720"></line>
-                    <text x="204" y="355">-R</text>
-                    <polygon points="400,200 395,205 395, 195" fill="#000720" stroke="#101F27"></polygon>
-                    <polygon points="200,0 195,5 205,5" fill="#000720" stroke="#101F27"></polygon>
-                    <polygon points="200,200 275,200 200,125" fill-opacity="0.6" stroke="black" fill="red"></polygon>
-                    <rect x="200" y="200" width="75" height="150" fill-opacity="0.6" stroke="black" fill="red"></rect>
-                    <path d="M 200 200 L 50 200 C 75 350 200 350 200 350 Z" fill-opacity="0.6" stroke="black" fill="red"></path>
-                    <circle id="pointer" r="8" cx="200" cy="200" fill-opacity="0.8" fill="red" visibility="hidden"></circle>
-                </svg>
+            <div id="plot1" class="plot" style="margin-left: 10%; margin-top: 5%">
+                <h:form id="plotForm">
+                    <h:panelGroup id="plot" layout="block" style="position: relative; width: 400px; height: 400px;">
+                        <!-- Сетка и оси -->
+                        <svg width="400" height="400" xmlns="http://www.w3.org/2000/svg" onclick="getCoordinates(event)">
+                            <!-- Ось X -->
+                            <line x1="0" y1="200" x2="400" y2="200" stroke="#000720"/>
+                            <!-- Ось Y -->
+                            <line x1="200" y1="0" x2="200" y2="400" stroke="#000720"/>
+
+                            <!-- Линии и подписи на оси X -->
+                            <line x1="350" y1="198" x2="350" y2="202" stroke="#000720"/>
+                            <text x="355" y="195">#{bean.r}</text>
+
+                            <line x1="275" y1="198" x2="275" y2="202" stroke="#000720"/>
+                            <text x="280" y="195">#{bean.r / 2}</text>
+
+                            <line x1="125" y1="198" x2="125" y2="202" stroke="#000720"/>
+                            <text x="123" y="195">-#{bean.r / 2}</text>
+
+                            <line x1="50" y1="198" x2="50" y2="202" stroke="#000720"/>
+                            <text x="55" y="195">-#{bean.r}</text>
+
+                            <!-- Линии и подписи на оси Y -->
+                            <line x1="198" y1="50" x2="202" y2="50" stroke="#000720"/>
+                            <text x="204" y="55">#{bean.r}</text>
+
+                            <line x1="198" y1="125" x2="202" y2="125" stroke="#000720"/>
+                            <text x="204" y="130">#{bean.r / 2}</text>
+
+                            <line x1="198" y1="275" x2="202" y2="275" stroke="#000720"/>
+                            <text x="204" y="280">-#{bean.r / 2}</text>
+
+                            <line x1="198" y1="350" x2="202" y2="350" stroke="#000720"/>
+                            <text x="204" y="355">-#{bean.r}</text>
+
+                            <!-- Стрелки осей -->
+                            <polygon points="400,200 395,205 395,195" fill="#000720" stroke="#101F27"/>
+                            <polygon points="200,0 195,5 205,5" fill="#000720" stroke="#101F27"/>
+
+                            <!-- Фигуры (треугольник, прямоугольник и сектор круга) -->
+                            <polygon points="200,200 275,200 200,125" fill-opacity="0.6" stroke="black" fill="red"/>
+                            <rect x="200" y="200" width="75" height="150" fill-opacity="0.6" stroke="black" fill="red"/>
+                            <path d="M 200 200 L 50 200 C 75 350 200 350 200 350 Z" fill-opacity="0.6" stroke="black" fill="red"/>
+
+                            <circle id="pointer" r="8" cx="200" cy="200" fill-opacity="0.8" fill="red" visibility="hidden"></circle>
+                        </svg>
+                    </h:panelGroup>
+
+
+                </h:form>
             </div>
+
         </div>
         <div>
         <h2 style="margin-left: 20px">Результаты:</h2>
@@ -190,7 +214,6 @@
                     </f:facet>
                     <h:outputText value="#{result.x}"/>
                 </h:column>
-
                 <h:column>
                     <f:facet name="header">
                         <h:outputText value="Y" />

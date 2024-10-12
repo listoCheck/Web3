@@ -1,42 +1,40 @@
 package org.example.web3;
 
 public class PointResult {
-    private int x;
+    private double x;
     private double y;
     private double r;
     private String result;
 
-    // Конструктор
-    public PointResult(int x, double y, double r, String result) {
-        this.x = x;
-        this.y = y;
-        this.r = r;
+    public PointResult(double x, double y, double r, String result) {
+        this.x = Math.round(x * 100.0) / 100.0;
+        this.y = Math.round(y * 100.0) / 100.0;
+        this.r = Math.round(r * 100.0) / 100.0;
         this.result = result;
     }
 
-    // Геттеры и сеттеры
-    public int getX() {
-        return x;
+    public double getX() {
+        return Math.round(x * 100.0) / 100.0;
     }
 
     public void setX(int x) {
-        this.x = x;
+        this.x = Math.round(x * 100.0) / 100.0;
     }
 
     public double getY() {
-        return y;
+        return Math.round(y * 100.0) / 100.0;
     }
 
     public void setY(double y) {
-        this.y = y;
+        this.y = Math.round(y * 100.0) / 100.0;
     }
 
     public double getR() {
-        return r;
+        return Math.round(r * 100.0) / 100.0;
     }
 
     public void setR(double r) {
-        this.r = r;
+        this.r = Math.round(r * 100.0) / 100.0;
     }
 
     public String getResult() {

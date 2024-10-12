@@ -10,37 +10,35 @@ import java.util.List;
 @SessionScoped
 public class PointCheckerBean implements Serializable {
 
-    private int x;
+    private double x;
     private double y;
     private double r = 1.0;
     private String result;
 
-    // Список для хранения результатов
     private List<PointResult> results = new ArrayList<>();
 
-    // Геттеры и сеттеры для X, Y, R и result
-    public int getX() {
-        return x;
+    public double getX() {
+        return Math.round(x * 100.0) / 100.0;
     }
 
     public void setX(int x) {
-        this.x = x;
+        this.x = Math.round(x * 100.0) / 100.0;
     }
 
     public double getY() {
-        return y;
+        return Math.round(y * 100.0) / 100.0;
     }
 
     public void setY(double y) {
-        this.y = y;
+        this.y = Math.round(y * 100.0) / 100.0;
     }
 
     public double getR() {
-        return r;
+        return Math.round(r * 100.0) / 100.0;
     }
 
     public void setR(double r) {
-        this.r = r;
+        this.r = Math.round(r * 100.0) / 100.0;
     }
 
     public String getResult() {
@@ -51,31 +49,31 @@ public class PointCheckerBean implements Serializable {
         this.result = result;
     }
 
-    // Метод для проверки точки
     public void checkPoint() {
         if (isPointInside()) {
             result = "YES";
         } else {
             result = "NO";
         }
-        // Добавляем результат в список
-        results.add(new PointResult(x, y, r, result));
+        results.add(new PointResult(getX(), getY(), getR(), result));
     }
 
-    // Логика проверки попадания в область (примерная)
     private boolean isPointInside() {
-        // Проверка по фигурам на графике (например, круг, треугольник, прямоугольник)
-        return (x >= 0 && y >= 0 && x * x + y * y <= r * r) ||  // Четверть круга
-                (x <= 0 && y <= 0 && x >= -r && y >= -r / 2) ||  // Прямоугольник
-                (x >= 0 && y <= 0 && y >= x - r / 2);             // Треугольник
+        return (x <= 0 && y <= 0 && x * x + y * y <= r * r) ||
+                (x >= 0 && y >= 0 && y <= - x + r/2) ||
+                (x >= 0 && y <= 0 && y >= -r && x <= r/2);
     }
 
-    // Геттер для списка результатов
     public List<PointResult> getResults() {
         return results;
     }
 
     public void setResults(List<PointResult> results) {
         this.results = results;
+    }
+
+    public void setCoordinates(double x, double y) {
+        this.x = Math.round(x * 100.0) / 100.0;
+        this.y = Math.round(y * 100.0) / 100.0;
     }
 }
