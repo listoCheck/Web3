@@ -2,6 +2,8 @@ package org.example.web3;
 
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
+import org.primefaces.PrimeFaces;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +57,8 @@ public class PointCheckerBean implements Serializable {
         } else {
             result = "NO";
         }
+        //PrimeFaces.current().executeScript("drawPointRemote()");
+        PrimeFaces.current().executeScript("updatePointColors("+ x + "," + y + "," + r + ",\"" + result + "\")");
         results.add(new PointResult(getX(), getY(), getR(), result));
     }
 

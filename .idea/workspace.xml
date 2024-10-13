@@ -10,11 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7c2d3fba-25c9-404b-9465-4fd038a9f2f7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/web3/PointCheckerBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/web3/PointCheckerBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/web3/PointResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/web3/PointResult.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/main.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/main.xhtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/recources/js/buttonColor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/recources/js/buttonColor.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -323,7 +323,7 @@
       <workItem from="1728300278279" duration="4525000" />
       <workItem from="1728309627740" duration="20526000" />
       <workItem from="1728495393675" duration="26125000" />
-      <workItem from="1728728637037" duration="3622000" />
+      <workItem from="1728728637037" duration="13054000" />
     </task>
     <task id="LOCAL-00001" summary="Так, ну что, я уже разобрался как работает статика, первой страничке осталось немного">
       <option name="closed" value="true" />
@@ -373,7 +373,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728584421445</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="осталась бд + попробовать адекватно сделать смену х по нажати и R">
+      <option name="closed" value="true" />
+      <created>1728732376612</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1728732376612</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -385,7 +393,8 @@
     <MESSAGE value="Вторую страничку сделал" />
     <MESSAGE value="я понял как делать бины!" />
     <MESSAGE value="надо сделать динамическое изменения надписей на графике + бд" />
-    <option name="LAST_COMMIT_MESSAGE" value="надо сделать динамическое изменения надписей на графике + бд" />
+    <MESSAGE value="осталась бд + попробовать адекватно сделать смену х по нажати и R" />
+    <option name="LAST_COMMIT_MESSAGE" value="осталась бд + попробовать адекватно сделать смену х по нажати и R" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

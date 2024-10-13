@@ -8,33 +8,13 @@
 <h:head>
     <meta charset="UTF-8"/>
     <title>Web3</title>
-    <link href="recources/css/mainPage.css" rel="stylesheet" type="text/css" />
+    <link href="recources/css/mainPage.css" rel="stylesheet" type="text/css"/>
     <link href="recources/images/duck.png" rel="icon"/>
     <style>
-        .custom-header {
-            background-color: #4CAF50;
-            color: white;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        .custom-table .ui-datatable-header {
-            background-color: #4CAF50;
-            color: white;
-        }
-
         .custom-table .ui-datatable-data td {
             background-color: #f9f9f9;
             color: #333;
             border: 1px solid #ddd;
-        }
-
-        .custom-table .result-yes {
-            color: green;
-        }
-
-        .custom-table .result-no {
-            color: red;
         }
 
         .custom-table .ui-datatable-data tr:hover {
@@ -68,33 +48,42 @@
         }
 
     </style>
-    <h:outputText id="hiddenR" value="#{bean.r}" style="display:none" />
+    <h:outputText id="hiddenR" value="#{bean.r}" style="display:none"/>
     <script>
         function getCoordinates(event) {
-            const svg = event.currentTarget;
-            const rect = svg.getBoundingClientRect();
-            const x = event.clientX - rect.left;
-            const y = event.clientY - rect.top;
-            const r = parseFloat(document.getElementById("hiddenR").innerText);
+            let svg = event.currentTarget;
+            let rect = svg.getBoundingClientRect();
+            let x = event.clientX - rect.left;
+            let y = event.clientY - rect.top;
+            let r = parseFloat(document.getElementById("hiddenR").innerText);
             const centerX = 200;
             const centerY = 200;
-            const graphX = (x - centerX) / (150 / r);
-            const graphY = (centerY - y) / (150 / r);
-            const pointer = document.getElementById("pointer");
+            let graphX = (x - centerX) / (150 / r);
+            let graphY = (centerY - y) / (150 / r);
+            let pointer = document.getElementById("pointer");
             pointer.setAttribute("cx", x);
             pointer.setAttribute("cy", y);
             pointer.setAttribute("visibility", "visible");
             pointer.setAttribute('fill', 'black');
             setCoordinates([{name: 'x', value: graphX}, {name: 'y', value: graphY}]);
         }
+        function updatePointColors(x, y, r, res) {
+            console.log(x, y, r, res)
+            let pointer = document.getElementById("pointer");
+            let graphX = 200 + (150 * x) / r;
+            let graphY = 200 - (150 * y) / r;
+
+            pointer.setAttribute("cx", graphX);
+            pointer.setAttribute("cy", graphY);
+            pointer.setAttribute("visibility", "visible");
+            pointer.setAttribute('fill', res === "YES" ? 'green' : 'red');
+        }
     </script>
-
-
 
 </h:head>
 <header>
     <div class="header-content">
-        <img src="recources/images/logo.png" alt="Logo" />
+        <img src="recources/images/logo.png" alt="Logo"/>
         <div class="header-text">
             <h1>Лабораторная работа по вебу №3</h1>
             <h2>ААА</h2>
@@ -112,15 +101,15 @@
 
                 <h2>Измените X:</h2>
                 <div class="button-container" id="commandButton">
-                    <p:commandButton value="-3" id="__3" action="#{bean.setX(-3)}" onclick="changeButtonStyle(this)" />
-                    <p:commandButton value="-2" id="__2" action="#{bean.setX(-2)}" onclick="changeButtonStyle(this)" />
-                    <p:commandButton value="-1" id="__1" action="#{bean.setX(-1)}" onclick="changeButtonStyle(this)" />
-                    <p:commandButton value="0" id="_0" action="#{bean.setX(0)}" onclick="changeButtonStyle(this)" />
-                    <p:commandButton value="1" id="_1" action="#{bean.setX(1)}" onclick="changeButtonStyle(this)" />
-                    <p:commandButton value="2" id="_2" action="#{bean.setX(2)}" onclick="changeButtonStyle(this)" />
-                    <p:commandButton value="3" id="_3" action="#{bean.setX(3)}" onclick="changeButtonStyle(this)" />
-                    <p:commandButton value="4" id="_4" action="#{bean.setX(4)}" onclick="changeButtonStyle(this)" />
-                    <p:commandButton value="5" id="_5" action="#{bean.setX(5)}" onclick="changeButtonStyle(this)" />
+                    <p:commandButton value="-3" id="__3" action="#{bean.setX(-3)}" update="xValue"/>
+                    <p:commandButton value="-2" id="__2" action="#{bean.setX(-2)}" update="xValue"/>
+                    <p:commandButton value="-1" id="__1" action="#{bean.setX(-1)}" update="xValue"/>
+                    <p:commandButton value="0" id="_0" action="#{bean.setX(0)}" update="xValue"/>
+                    <p:commandButton value="1" id="_1" action="#{bean.setX(1)}" update="xValue"/>
+                    <p:commandButton value="2" id="_2" action="#{bean.setX(2)}" update="xValue"/>
+                    <p:commandButton value="3" id="_3" action="#{bean.setX(3)}" update="xValue"/>
+                    <p:commandButton value="4" id="_4" action="#{bean.setX(4)}" update="xValue"/>
+                    <p:commandButton value="5" id="_5" action="#{bean.setX(5)}" update="xValue"/>
                 </div>
                 <h:outputText id="xValue" value="Текущий X: #{bean.x}"/>
 
@@ -129,33 +118,35 @@
                              placeholder="Введите Y от -5 до 5"/>
 
                 <h2>Измените R:</h2>
-                <p:selectOneRadio value="#{bean.r}" update="plot">
+                <p:selectOneRadio value="#{bean.r}" update="rValue">
                     <f:selectItem itemLabel="1" itemValue="1.0" action="#{bean.setR(1)}" update="rValue"/>
                     <f:selectItem itemLabel="1.5" itemValue="1.5" action="#{bean.setR(1.5)}" update="rValue"/>
                     <f:selectItem itemLabel="2" itemValue="2.0" action="#{bean.setR(2)}" update="rValue"/>
                     <f:selectItem itemLabel="2.5" itemValue="2.5" action="#{bean.setR(2.5)}" update="rValue"/>
                     <f:selectItem itemLabel="3" itemValue="3.0" action="#{bean.setR(3)}" update="rValue"/>
                 </p:selectOneRadio>
-                <p:commandButton value="Нарисовать R" id="upd" onclick="changeButtonStyle(this)" style="margin-top: 5%"/>
-                <h:outputText id="rValue" value="Текущий R на графике: #{bean.getR()}" style="margin-left: 5%"/>
+                <p:commandButton value="Нарисовать R" id="upd" onclick="changeButtonStyle(this)"
+                                 style="margin-top: 5%"/>
+                <h:outputText id="rValue" value="Текущий R на графике: #{bean.r}" style="margin-left: 5%"/>
 
                 <div class="checkButton">
-                    <p:commandButton value="Проверить" action="#{bean.checkPoint}" update="resultTable" style="margin-left: 0%; margin-top: 10%"/>
+                    <p:commandButton value="Проверить" action="#{bean.checkPoint()}" update="resultTable"/>
                 </div>
                 <h:outputText id="result" value="#{bean.result}" style="color: green;"/>
             </div>
-            <p:remoteCommand name="setCoordinates" action="#{bean.setCoordinates(param.x, param.y)}" update="xValue, yValue">
-                <f:param name="x" value="#{param.x}" />
-                <f:param name="y" value="#{param.y}" />
+
+            <p:remoteCommand name="setCoordinates" action="#{bean.setCoordinates(param.x, param.y)}"
+                             update="xValue, yValue, rValue">
+                <f:param name="x" value="#{param.x}"/>
+                <f:param name="y" value="#{param.y}"/>
             </p:remoteCommand>
-
-
-            <!-- Правый блок: График -->
+            <p:remoteCommand name="drawPointRemote" process="@this" oncomplete="drawPoint(#{bean.x}, #{bean.y}, #{bean.r}, '#{bean.getResult()}')" />
             <div id="plot1" class="plot" style="margin-left: 10%; margin-top: 5%">
                 <h:form id="plotForm">
                     <h:panelGroup id="plot" layout="block" style="position: relative; width: 400px; height: 400px;">
                         <!-- Сетка и оси -->
-                        <svg width="400" height="400" xmlns="http://www.w3.org/2000/svg" onclick="getCoordinates(event)">
+                        <svg width="400" height="400" xmlns="http://www.w3.org/2000/svg"
+                             onclick="getCoordinates(event)">
                             <!-- Ось X -->
                             <line x1="0" y1="200" x2="400" y2="200" stroke="#000720"/>
                             <!-- Ось Y -->
@@ -194,9 +185,11 @@
                             <!-- Фигуры (треугольник, прямоугольник и сектор круга) -->
                             <polygon points="200,200 275,200 200,125" fill-opacity="0.6" stroke="black" fill="red"/>
                             <rect x="200" y="200" width="75" height="150" fill-opacity="0.6" stroke="black" fill="red"/>
-                            <path d="M 200 200 L 50 200 C 75 350 200 350 200 350 Z" fill-opacity="0.6" stroke="black" fill="red"/>
+                            <path d="M 200 200 L 50 200 C 75 350 200 350 200 350 Z" fill-opacity="0.6" stroke="black"
+                                  fill="red"/>
 
-                            <circle id="pointer" r="8" cx="200" cy="200" fill-opacity="0.8" fill="red" visibility="hidden"></circle>
+                            <circle id="pointer" r="8" cx="200" cy="200" fill-opacity="0.8" fill="red"
+                                    visibility="hidden"></circle>
                         </svg>
                     </h:panelGroup>
 
@@ -206,31 +199,32 @@
 
         </div>
         <div>
-        <h2 style="margin-left: 20px">Результаты:</h2>
-            <h:dataTable id="resultTable" value="#{bean.results}" var="result" styleClass="custom-table" style="width:60%; margin-left: 20%">
+            <h2 style="margin-left: 20px">Результаты:</h2>
+            <h:dataTable id="resultTable" value="#{bean.results}" var="result" styleClass="custom-table"
+                         style="width:60%; margin-left: 20%">
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText value="X" />
+                        <h:outputText value="X"/>
                     </f:facet>
                     <h:outputText value="#{result.x}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText value="Y" />
+                        <h:outputText value="Y"/>
                     </f:facet>
                     <h:outputText value="#{result.y}"/>
                 </h:column>
 
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText value="R" />
+                        <h:outputText value="R"/>
                     </f:facet>
                     <h:outputText value="#{result.r}"/>
                 </h:column>
 
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText value="Результат" />
+                        <h:outputText value="Результат"/>
                     </f:facet>
                     <h:outputText value="#{result.result}"/>
                 </h:column>
