@@ -1,0 +1,13 @@
+1)to superuser:
+ssh -p 2222 -l s408145 -L25104:localhost:25104 helios.cs.ifmo.ru
+artem 123
+
+2)to user
+ssh -p 2222 -l s408145 -L25102:localhost:25102 helios.cs.ifmo.ru
+asd 123
+
+3)start server
+JAVA=java web2/wildfly-33.0.2.Final/bin/standalone.sh
+
+4)find
+http://127.0.0.1:25102/Web_2/
