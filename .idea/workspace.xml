@@ -9,16 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c2d3fba-25c9-404b-9465-4fd038a9f2f7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/commadns.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/web3/baze/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/web3/PointCheckerBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/web3/PointCheckerBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/main.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/main.xhtml" afterDir="false" />
-    </list>
+    <list default="true" id="7c2d3fba-25c9-404b-9465-4fd038a9f2f7" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -327,7 +318,7 @@
       <workItem from="1728300278279" duration="4525000" />
       <workItem from="1728309627740" duration="20526000" />
       <workItem from="1728495393675" duration="26125000" />
-      <workItem from="1728728637037" duration="26819000" />
+      <workItem from="1728728637037" duration="27211000" />
     </task>
     <task id="LOCAL-00001" summary="Так, ну что, я уже разобрался как работает статика, первой страничке осталось немного">
       <option name="closed" value="true" />
@@ -393,7 +384,23 @@
       <option name="project" value="LOCAL" />
       <updated>1728855764978</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="готово">
+      <option name="closed" value="true" />
+      <created>1728917093907</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1728917093907</updated>
+    </task>
+    <task id="LOCAL-00010" summary="готово">
+      <option name="closed" value="true" />
+      <created>1728917115078</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1728917115078</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -407,7 +414,8 @@
     <MESSAGE value="надо сделать динамическое изменения надписей на графике + бд" />
     <MESSAGE value="осталась бд + попробовать адекватно сделать смену х по нажати и R" />
     <MESSAGE value="Ну что, осталась только бд))" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ну что, осталась только бд))" />
+    <MESSAGE value="готово" />
+    <option name="LAST_COMMIT_MESSAGE" value="готово" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
