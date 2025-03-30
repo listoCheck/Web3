@@ -11,3 +11,6 @@ JAVA=java web2/wildfly-33.0.2.Final/bin/standalone.sh
 
 4)find
 http://127.0.0.1:25102/Web_2/
+
+5)check data base
+psql -h pg -d studs
