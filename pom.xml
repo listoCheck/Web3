@@ -1,13 +1,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
     <artifactId>jsf-app</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-
+    <scm>
+        <connection>scm:git:https://github.com/listoCheck/Web3.git</connection>
+        <developerConnection>scm:git:https://github.com/listoCheck/Web3.git</developerConnection>
+        <url>https://github.com/listoCheck/Web3</url>
+    </scm>
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
@@ -16,11 +20,19 @@
     </properties>
 
     <dependencies>
-        <!-- Jakarta EE API -->
+        <!-- Jakarta Servlet API -->
         <dependency>
-            <groupId>jakarta.platform</groupId>
-            <artifactId>jakarta.jakartaee-api</artifactId>
-            <version>9.1.0</version>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>5.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- JSF API -->
+        <dependency>
+            <groupId>jakarta.faces</groupId>
+            <artifactId>jakarta.faces-api</artifactId>
+            <version>3.0.0</version>
             <scope>provided</scope>
         </dependency>
 
@@ -32,22 +44,27 @@
             <classifier>jakarta</classifier>
         </dependency>
 
-        <!-- Lombok -->
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.24</version>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-api</artifactId>
+            <version>9.1.0</version>
             <scope>provided</scope>
         </dependency>
 
-        <!-- Gson -->
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.24</version> <!-- Используйте конкретную версию -->
+            <scope>provided</scope>
+        </dependency>
+
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.10.1</version>
         </dependency>
 
-        <!-- PostgreSQL -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
@@ -59,7 +76,7 @@
         <finalName>jsf-app</finalName>
 
         <plugins>
-            <!-- Компиляция -->
+            <!-- Плагин для компиляции -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -70,7 +87,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Упаковка в WAR -->
+            <!-- Плагин для упаковки в JAR/WAR -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
@@ -80,7 +97,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Запуск тестов -->
+            <!-- Плагин для выполнения тестов -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -92,32 +109,11 @@
                 </configuration>
             </plugin>
 
-            <!-- Очистка проекта -->
+            <!-- Плагин для очистки -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-clean-plugin</artifactId>
                 <version>3.1.0</version>
-            </plugin>
-
-            <!-- Воспроизведение музыки -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>3.0.0</version>
-                <executions>
-                    <execution>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                        <configuration>
-                            <executable>cmd</executable>
-                            <arguments>
-                                <argument>"C:\Users\admin\Downloads\sound.mp3"</argument>
-                            </arguments>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
 
             <!-- Получение предыдущих ревизий из Git -->
@@ -131,6 +127,28 @@
                         <goals>
                             <goal>create</goal>
                         </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Плагин для воспроизведения музыки после сборки -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <phase>verify</phase> <!-- Этап выполнения сборки -->
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>powershell</executable>
+                            <arguments>
+
+                                <argument>"C:\Users\admin\Downloads\sound.mp3"</argument>
+                            </arguments>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
@@ -157,6 +175,42 @@
                 </executions>
             </plugin>
 
+            <!-- native2ascii для локализации -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>native2ascii-maven-plugin</artifactId>
+                <version>1.0-alpha-1</version>
+                <executions>
+                    <execution>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>native2ascii</goal>
+                        </goals>
+                        <configuration>
+                            <srcDir>src/main/webapp/resources</srcDir>
+                            <destDir>target/classes</destDir>
+                            <encoding>UTF-8</encoding>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>production</id>
+            <properties>
+                <java.version>17</java.version>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>dev</id>
+            <properties>
+                <java.version>17</java.version>
+            </properties>
+        </profile>
+    </profiles>
 </project>

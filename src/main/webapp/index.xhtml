@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
     <title>Web3</title>
     <link href="recources/css/indexPage.css" rel="stylesheet" type="text/css" />
@@ -19,7 +19,7 @@
     <div class="header-content">
         <img src="recources/images/logo.png" alt="Logo" />
         <div class="header-text">
-            <h1>Лабораторная работа по вебу №3</h1>
+            <h1>#{title}</h1>
             <h2>ААА</h2>
             <h2>Группа P3206, Вариант №115223</h2>
         </div>
@@ -30,6 +30,15 @@
     <h:form class="button">
         <p:button value="Главная" action="go-to-main" id="go-to-main-button"/>
     </h:form>
+    <h:form>
+        <h:selectOneMenu value="#{languageBean.getLocale}">
+            <f:selectItem itemLabel="English" itemValue="en" />
+            <f:selectItem itemLabel="Русский" itemValue="ru" />
+            <f:ajax listener="#{languageBean.changeLanguage}" render="@form" />
+        </h:selectOneMenu>
+    </h:form>
+
+
 </h:body>
 <footer>
     <figure>
