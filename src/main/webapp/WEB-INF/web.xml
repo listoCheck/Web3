@@ -28,4 +28,5 @@
         <param-value>/jakarta.faces.resource/*</param-value>
     </context-param>
 
+
 </web-app>

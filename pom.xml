@@ -70,6 +70,20 @@
             <artifactId>postgresql</artifactId>
             <version>42.7.3</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/jakarta.management.j2ee/management-api-parent -->
+        <dependency>
+            <groupId>jakarta.management.j2ee</groupId>
+            <artifactId>management-api-parent</artifactId>
+            <version>1.1.4</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.34</version>
+            <scope>provided</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -138,7 +152,7 @@
                 <version>3.0.0</version>
                 <executions>
                     <execution>
-                        <phase>verify</phase> <!-- Этап выполнения сборки -->
+                        <phase>verify</phase>
                         <goals>
                             <goal>exec</goal>
                         </goals>
@@ -175,25 +189,7 @@
                 </executions>
             </plugin>
 
-            <!-- native2ascii для локализации -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>native2ascii-maven-plugin</artifactId>
-                <version>1.0-alpha-1</version>
-                <executions>
-                    <execution>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>native2ascii</goal>
-                        </goals>
-                        <configuration>
-                            <srcDir>src/main/webapp/resources</srcDir>
-                            <destDir>target/classes</destDir>
-                            <encoding>UTF-8</encoding>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+
 
         </plugins>
     </build>

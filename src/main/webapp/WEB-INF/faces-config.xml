@@ -4,13 +4,6 @@
               xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
                                   https://jakarta.ee/xml/ns/jakartaee/web-facesconfig_3_0.xsd">
 
-    <application>
-        <locale-config>
-            <default-locale>ru</default-locale>
-            <supported-locale>en</supported-locale>
-            <supported-locale>ru</supported-locale>
-        </locale-config>
-    </application>
 
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
@@ -37,9 +30,11 @@
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
 
-    <managed-bean>
-        <managed-bean-name>languageBean</managed-bean-name>
-        <managed-bean-class>org.example.web3.LanguageBean</managed-bean-class>
-        <managed-bean-scope>session</managed-bean-scope>
-    </managed-bean>
+
+    <application>
+        <resource-bundle>
+            <base-name>messages</base-name>
+            <var>msg</var>
+        </resource-bundle>
+    </application>
 </faces-config>

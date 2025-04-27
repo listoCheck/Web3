@@ -135,8 +135,14 @@
                 <div class="checkButton">
                     <p:commandButton value="Проверить" action="#{bean.checkPoint()}" update="resultTable"/>
                 </div>
+
                 <h:outputText id="result" value="#{bean.result}" style="color: green;"/>
             </div>
+
+            <p:growl id="msgs" showDetail="true" life="4000" />
+
+            <p:remoteCommand name="checkNotification" update="msgs" action="#{attemptStatsBean.displayNotification}" />
+
 
             <p:remoteCommand name="setCoordinates" action="#{bean.setCoordinates(param.x, param.y)}"
                              update="xValue, yValue, rValue">
@@ -234,6 +240,7 @@
             </h:dataTable>
         </div>
     </h:form>
+
 </h:body>
 
 <p:button value="Начальная страница" styleClass="mybutton" outcome="go-index"/>

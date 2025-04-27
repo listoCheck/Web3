@@ -1,28 +1,28 @@
+
 package org.example.web3;
 
-import jakarta.faces.bean.ManagedBean;
-import jakarta.faces.bean.SessionScoped;
-import java.io.Serializable;
-import java.util.Locale;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.faces.context.FacesContext;
+import jakarta.inject.Named;
 
-@ManagedBean(name = "languageBean")
-@SessionScoped
-public class LanguageBean implements Serializable {
+import java.util.Locale;
 
-    private String locale = "ru";
+@Named("languageBean")
+@ApplicationScoped
+public class LanguageBean {
+    private Locale currentLocale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
 
-    public String getLocale() {
-        return locale;
+    public Locale getCurrentLocale() {
+        return currentLocale;
     }
 
-    public void setLocale(String locale) {
-        this.locale = locale;
+    public void setEnglishLocale() {
+        currentLocale = Locale.ENGLISH;
+        FacesContext.getCurrentInstance().getViewRoot().setLocale(currentLocale);
     }
 
-    public void changeLanguage() {
-        FacesContext facesContext = FacesContext.getCurrentInstance();
-        Locale newLocale = new Locale(locale);
-        facesContext.getViewRoot().setLocale(newLocale);
+    public void setRussianLocale() {
+        currentLocale = new Locale("ru", "RU");
+        FacesContext.getCurrentInstance().getViewRoot().setLocale(currentLocale);
     }
 }

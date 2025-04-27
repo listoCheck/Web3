@@ -1,17 +1,21 @@
 package org.example.web3;
 
+import jakarta.enterprise.context.Destroyed;
+import jakarta.enterprise.context.Initialized;
 import jakarta.enterprise.context.SessionScoped;
+import jakarta.enterprise.event.Observes;
 import jakarta.inject.Named;
 import org.example.web3.baze.Test;
+import org.example.web3.managedBeansFolder.AttemptStats;
+import org.example.web3.managedBeansFolder.HitRatio;
 import org.primefaces.PrimeFaces;
+
+import javax.management.*;
 import java.io.Serializable;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+import java.lang.management.ManagementFactory;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.example.web3.baze.Test.connection;
 
 @Named("bean")
 @SessionScoped
@@ -56,15 +60,32 @@ public class PointCheckerBean implements Serializable {
         this.result = result;
     }
 
+    private final AttemptStats statsMBean = new AttemptStats();
+    private final HitRatio hitRatioMBean = new HitRatio();
+
+
+    public void init(@Observes @Initialized(SessionScoped.class) Object unused) {
+        MBeanRegistry.registerBean(statsMBean, "attemptStats");
+        MBeanRegistry.registerBean(hitRatioMBean, "hitRatio");
+    }
+
+    public void destroy(@Observes @Destroyed(SessionScoped.class) Object unused) {
+        MBeanRegistry.unregisterBean(statsMBean);
+        MBeanRegistry.unregisterBean(hitRatioMBean);
+    }
+
     public void checkPoint() throws SQLException {
         if (isPointInside()) {
             result = "YES";
         } else {
             result = "NO";
         }
+
         //PrimeFaces.current().executeScript("drawPointRemote()");
         PrimeFaces.current().executeScript("updatePointColors("+ x + "," + y + "," + r + ",\"" + result + "\")");
         PointResult pointResult = new PointResult(x, y, r, result);
+        statsMBean.updateAttempt(isPointInside());
+        hitRatioMBean.updateStats(isPointInside());
         results.add(pointResult);
         try {
             addData();

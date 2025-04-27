@@ -19,9 +19,9 @@
     <div class="header-content">
         <img src="recources/images/logo.png" alt="Logo" />
         <div class="header-text">
-            <h1>#{title}</h1>
+            <h1>#{msg.title}</h1>
             <h2>ААА</h2>
-            <h2>Группа P3206, Вариант №115223</h2>
+            <h2>#{msg.group}</h2>
         </div>
     </div>
 </header>
@@ -29,21 +29,17 @@
     <div id="clock" class="button"></div>
     <h:form class="button">
         <p:button value="Главная" action="go-to-main" id="go-to-main-button"/>
+        <h:commandLink value="RU" action="#{languageBean.setRussianLocale}" />
+        <h:commandLink value="EN" action="#{languageBean.setEnglishLocale}" />
     </h:form>
-    <h:form>
-        <h:selectOneMenu value="#{languageBean.getLocale}">
-            <f:selectItem itemLabel="English" itemValue="en" />
-            <f:selectItem itemLabel="Русский" itemValue="ru" />
-            <f:ajax listener="#{languageBean.changeLanguage}" render="@form" />
-        </h:selectOneMenu>
-    </h:form>
+
 
 
 </h:body>
 <footer>
     <figure>
-        Университет ИТМО, факультет ПИиКТ, бывшая кафедра ВТ
-        <figcaption>2024 год</figcaption>
+        #{msg.university}
+        <figcaption>#{msg.year}</figcaption>
     </figure>
 </footer>
 </html>
