@@ -1,13 +1,17 @@
 package org.example.web3.baze;
 import java.sql.*;
 public class Test {
-    public static final String DATABASE_HELIOS_URL = "jdbc:postgresql://pg/studs";
+    public static final String DATABASE_DOCKER_URL = "jdbc:postgresql://localhost:5432/postgres";
     //public static final String DATABASE_HELIOS_URL = "jdbc:postgresql://localhost:5432/studs";
     public static Statement statmt;
     public static Connection connection;
     public static void test(){
         try {
-            connection = DriverManager.getConnection(Test.DATABASE_HELIOS_URL);
+            connection = DriverManager.getConnection(
+                    Test.DATABASE_DOCKER_URL,
+                    "postgres",
+                    "123456"
+            );
             System.out.println("Успешное подключение к базе данных PostgreSQL!");
             statmt = connection.createStatement();
         } catch (SQLException e) {
